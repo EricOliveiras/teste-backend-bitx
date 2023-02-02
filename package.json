@@ -1,0 +1,20 @@
+{
+  "name": "teste-backend-bitx",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EricOliveiras/teste-backend-bitx.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EricOliveiras/teste-backend-bitx/issues"
+  },
+  "homepage": "https://github.com/EricOliveiras/teste-backend-bitx#readme"
+}
