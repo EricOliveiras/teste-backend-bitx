@@ -1,0 +1,32 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Task {
+  id          String    @id @default(uuid()) @map("_id") @db.ObjectId
+  title       String
+  description String?
+  member      Member[]
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  expire_in   DateTime?
+
+  @@map("task")
+}
+
+model Member {
+  id         String   @id @default(uuid()) @map("_id") @db.ObjectId
+  name       String
+  email      String
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  Task       Task?    @relation(fields: [task_id], references: [id])
+  task_id    String?  @db.ObjectId
+
+  @@map("member")
+}
