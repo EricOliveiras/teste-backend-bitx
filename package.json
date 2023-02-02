@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon",
+    "dev": "docker-compose up -d && npx prisma generate && npx prisma db push && nodemon",
     "prepare": "husky install",
     "lint": "npx eslint . --cache",
     "pre-commit": "lint-staged"
