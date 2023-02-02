@@ -22,7 +22,7 @@ model Task {
 model Member {
   id         String   @id @default(uuid()) @map("_id") @db.ObjectId
   name       String
-  email      String
+  email      String   @unique
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
   Task       Task?    @relation(fields: [task_id], references: [id])
