@@ -7,26 +7,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-model Task {
-  id          String    @id @default(uuid()) @map("_id") @db.ObjectId
-  title       String
-  description String?
-  member      Member[]
-  created_at  DateTime  @default(now())
-  updated_at  DateTime  @updatedAt
-  expire_in   DateTime?
-
-  @@map("task")
-}
-
 model Member {
-  id         String   @id @default(uuid()) @map("_id") @db.ObjectId
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
   name       String
   email      String   @unique
   created_at DateTime @default(now())
   updated_at DateTime @updatedAt
-  Task       Task?    @relation(fields: [task_id], references: [id])
-  task_id    String?  @db.ObjectId
+  task       Json[]   @default([])
 
   @@map("member")
+}
+
+model Task {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String?
+  created_at  DateTime  @default(now())
+  updated_at  DateTime  @updatedAt
+  expire_in   DateTime?
+  member      Json[]    @default([])
+
+  @@map("task")
 }
