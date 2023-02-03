@@ -1,8 +1,10 @@
 import { Request, Response } from 'express';
+import { addMemberInTask } from '../service/addMemberInTask';
 import { createTask } from '../service/createTask';
 import { deleteTask } from '../service/deleteTask';
 import { readAllTask } from '../service/readAllTasks';
 import { readTask } from '../service/readTask';
+import { removeMemberFromTask } from '../service/removeMemberFromTask';
 import { updateTask } from '../service/updateTask';
 
 export const taskController = {
@@ -30,6 +32,31 @@ export const taskController = {
     const tasks = await readAllTask();
 
     return res.status(200).json(tasks);
+  },
+
+  async addMember(req: Request, res: Response) {
+    const { id } = req.params;
+    const { name, email } = req.body;
+
+    const addedMember = await addMemberInTask(
+      id,
+      name,
+      email
+    );
+
+    return res.status(200).json(addedMember);
+  },
+
+  async removeMember(req: Request, res: Response) {
+    const { id } = req.params;
+    const { member_id } = req.body;
+
+    await removeMemberFromTask(
+      id,
+      member_id
+    );
+
+    return res.sendStatus(200);
   },
 
   async update(req: Request, res: Response) {
