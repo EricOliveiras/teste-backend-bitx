@@ -30,7 +30,7 @@ export const taskRepository = {
     return tasks;
   },
 
-  async addMember(id: string, member: Array<IMember> | IMember): Promise<Task> {
+  async addMember(id: string, member: IMember[] | IMember): Promise<Task> {
     const task = await db.task.update({
       where: { id },
       data: {
@@ -43,12 +43,12 @@ export const taskRepository = {
     return task;
   },
 
-  async removeMember(id: string, member: Array<IMember> | IMember): Promise<Task> {
+  async removeMember(id: string, member: IMember[] | IMember | []): Promise<Task> {
     const task = await db.task.update({
       where: { id },
       data: {
         member: {
-          set: member || []
+          set: member
         }
       },
     });
