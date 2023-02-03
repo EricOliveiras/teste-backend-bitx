@@ -11,5 +11,6 @@ export type ITaskUpdate = {
   title?: string;
   description?: string;
   member?: string;
+  task_status?: string;
   expire_in?: Date;
 }
