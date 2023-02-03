@@ -1,10 +1,10 @@
-export type Member = {
-  nome: string;
+export type IMember = {
+  name: string;
   email: string;
 }
 
 export type IMemberUpdate = {
-  nome?: string;
+  name?: string;
   email?: string;
 }
 

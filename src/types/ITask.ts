@@ -1,16 +1,16 @@
-import { Member } from './IMember';
+import { IMember } from './IMember';
 
 export type ITask = {
   title: string;
   description: string;
-  member?: Member[] | [];
+  member?: IMember[] | [];
   expire_in?: Date;
 }
 
 export type ITaskUpdate = {
   title?: string;
   description?: string;
-  member?: string;
+  member?: IMember[] | [];
   task_status?: string;
   expire_in?: Date;
 }
